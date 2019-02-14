@@ -42,4 +42,24 @@ main() {
       expect(returnedList, [1, 2, 4, 8]);
     });
   });
+
+  group('remove()', () {
+    test('removes the the specified value', () {
+      final List<int> list = [1, 2];
+      final List<int> returnedList = fn_list.remove(list, 2);
+      expect(returnedList, [1]);
+    });
+
+    test('removes only the first instance of the specified value', () {
+      final List<int> list = [1, 2, 4, 2];
+      final List<int> returnedList = fn_list.remove(list, 2);
+      expect(returnedList, [1, 4, 2]);
+    });
+
+    test('removes nothing if the value is not present', () {
+      final List<int> list = [1, 2, 4];
+      final List<int> returnedList = fn_list.remove(list, 8);
+      expect(returnedList, [1, 2, 4]);
+    });
+  });
 }

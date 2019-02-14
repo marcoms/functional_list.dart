@@ -1,0 +1,11 @@
+name: functional_list
+version: 0.1.0
+description: Functional implementation of common list operations
+author: Marco Scannadinari <m@scannadinari.co.uk>
+homepage: https://github.com/marcoms/functional_list
+repository: https://github.com/marcoms/functional_list
+issue_tracker: https://github.com/marcoms/functional_list/issues
+dev_dependencies:
+  test: ^1.5.3
+environment:
+  sdk: '>=2.0.0 <3.0.0'

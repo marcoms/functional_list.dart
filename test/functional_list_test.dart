@@ -145,5 +145,10 @@ main() {
       final List<int> returnedList = fn_list.removeRange(list, 1, 1);
       expect(returnedList, [1, 2, 4, 8]);
     });
+
+    test('throws when start > end', () {
+      final List<int> list = [1, 2, 4, 8];
+      expect(() => fn_list.removeRange(list, 2, 1), throwsRangeError);
+    });
   });
 }

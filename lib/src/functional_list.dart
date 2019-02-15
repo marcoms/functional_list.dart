@@ -24,3 +24,58 @@ List<T> remove<T>(List<T> list, T value) {
 
   return newList;
 }
+
+/// Returns a new list with all occurances of [value] excluded.
+List<T> removeAll<T>(List<T> list, T value) {
+  return list.where((element) => element != value).toList();
+}
+
+/// Returns a new list with the last occurance of [value] excluded.
+List<T> removeLast<T>(List<T> list, T value) {
+  final lastIndex = list.lastIndexOf(value);
+  if (lastIndex == -1) {
+    return list.toList();
+  }
+
+  final List<T> newList = [];
+  for (int i = 0; i < list.length; ++i) {
+    if (i != lastIndex) {
+      newList.add(list[i]);
+    }
+  }
+
+  return newList;
+}
+
+/// Returns a new list with the element at [index] excluded.
+List<T> removeAt<T>(List<T> list, int index) {
+  if (index < 0 || index >= list.length) {
+    throw RangeError('index out of range');
+  }
+
+  final List<T> newList = [];
+  for (int i = 0; i < list.length; ++i) {
+    if (i != index) {
+      newList.add(list[i]);
+    }
+  }
+
+  return newList;
+}
+
+/// Returns a new list with all elements between [start] (inclusive) and [end]
+/// (exclusive) excluded.
+List<T> removeRange<T>(List<T> list, int start, int end) {
+  assert(start <= end);
+  assert(start >= 0 && start <= list.length);
+  assert(end >= 0 && end <= list.length);
+
+  final List<T> newList = [];
+  for (int i = 0; i < list.length; ++i) {
+    if (!(i >= start && i < end)) {
+      newList.add(list[i]);
+    }
+  }
+
+  return newList;
+}

@@ -66,9 +66,15 @@ List<T> removeAt<T>(List<T> list, int index) {
 /// Returns a new list with all elements between [start] (inclusive) and [end]
 /// (exclusive) excluded.
 List<T> removeRange<T>(List<T> list, int start, int end) {
-  assert(start <= end);
-  assert(start >= 0 && start <= list.length);
-  assert(end >= 0 && end <= list.length);
+  if (
+    start > end
+    || start < 0
+    || start > list.length
+    || end < 0
+    || end > list.length
+  ) {
+    throw RangeError('range $start-$end is invalid');
+  }
 
   final List<T> newList = [];
   for (int i = 0; i < list.length; ++i) {
